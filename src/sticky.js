@@ -197,6 +197,7 @@ export default class Sticky extends React.Component {
       stickyStyle,
       bottomOffset,
       onStickyStateChange,
+      showPlaceholder,
       ...props
     } = this.props;
 
