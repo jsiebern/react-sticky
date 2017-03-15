@@ -11,7 +11,8 @@ export default class Sticky extends React.Component {
     stickyStyle: React.PropTypes.object,
     topOffset: React.PropTypes.number,
     bottomOffset: React.PropTypes.number,
-    onStickyStateChange: React.PropTypes.func
+    onStickyStateChange: React.PropTypes.func,
+    showPlaceholder: React.PropTypes.bool
   }
 
   static defaultProps = {
@@ -22,7 +23,8 @@ export default class Sticky extends React.Component {
     stickyStyle: {},
     topOffset: 0,
     bottomOffset: 0,
-    onStickyStateChange: () => {}
+    onStickyStateChange: () => {},
+    showPlaceholder: true
   }
 
   static contextTypes = {
@@ -180,7 +182,9 @@ export default class Sticky extends React.Component {
         stickyStyle.top = bottomLimit;
       }
 
-      placeholderStyle.paddingBottom = this.state.height;
+      if (this.props.showPlaceholder) {
+        placeholderStyle.paddingBottom = this.state.height;
+      }
 
       className += ` ${this.props.stickyClassName}`;
       style = Object.assign({}, style, stickyStyle, this.props.stickyStyle);
